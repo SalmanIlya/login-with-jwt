@@ -1,0 +1,13 @@
+const express=require("express")
+const bodyparser=require("body-parser")
+const cors =require("cors")
+const UserRoutes=require("./Routes/UserRoutes")
+const cookiparser=require("cookie-parser")
+const app=express()
+app.use(cookiparser())
+app.use(cors())
+app.use(express.urlencoded({extended:false}))
+app.use(bodyparser.urlencoded({extended:false}))
+app.use(bodyparser.json())
+app.use("/api",UserRoutes)
+module.exports=app
